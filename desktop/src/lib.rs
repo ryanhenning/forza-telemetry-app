@@ -5,7 +5,7 @@ use std::net::UdpSocket;
 use std::thread;
 use std::time::{Duration, SystemTime, UNIX_EPOCH};
 use std::sync::{Arc, Mutex};
-use tauri::{AppHandle, Manager, State, Emitter};
+use tauri::{Manager, State, Emitter};
 use crate::telemetry::TelemetryPayload;
 use crate::session::{ActiveSession, SessionSummary, save_session, load_all_sessions};
 

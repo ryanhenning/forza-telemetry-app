@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { listen } from "@tauri-apps/api/event";
 import { invoke } from "@tauri-apps/api/core";
 import { TelemetryPayload, SessionSummary } from "./types/telemetry";
@@ -15,13 +15,13 @@ function App() {
   const [isConnected, setIsConnected] = useState(false);
   const [lastPacketTime, setLastPacketTime] = useState<number>(0);
   const [telemetry, setTelemetry] = useState<TelemetryPayload | null>(null);
-  
+
   // Session tracking
   const [liveSessionActive, setLiveSessionActive] = useState(false);
   const [activeSessionData, setActiveSessionData] = useState<SessionSummary | null>(null);
   const [recentSession, setRecentSession] = useState<SessionSummary | null>(null);
   const [historicalSessions, setHistoricalSessions] = useState<SessionSummary[]>([]);
-  
+
   // Unit toggle
   const [useImperial, setUseImperial] = useState(true);
 
@@ -176,10 +176,10 @@ function App() {
   const totalSessionsCount = historicalSessions.length;
   const lifetimeDistance = historicalSessions.reduce((acc, curr) => acc + curr.totalDistanceMeters, 0);
   const maxSpeedMps = historicalSessions.length > 0 ? Math.max(...historicalSessions.map(s => s.maxSpeedMps)) : 0;
-  const overallAvgSpeedMps = historicalSessions.length > 0 
-    ? historicalSessions.reduce((acc, curr) => acc + curr.avgSpeedMps, 0) / historicalSessions.length 
+  const overallAvgSpeedMps = historicalSessions.length > 0
+    ? historicalSessions.reduce((acc, curr) => acc + curr.avgSpeedMps, 0) / historicalSessions.length
     : 0;
-  
+
   // Calculate average lead foot index
   const averageLeadFoot = historicalSessions.length > 0
     ? historicalSessions.reduce((acc, curr) => acc + curr.leadFootIndex, 0) / historicalSessions.length
@@ -234,7 +234,7 @@ function App() {
     const speedOffset = circ - (speedPercent / 100) * circ;
 
     // RPM calculation
-    const rpmPercent = telemetry.engineMaxRpm > 0 
+    const rpmPercent = telemetry.engineMaxRpm > 0
       ? Math.min((telemetry.currentEngineRpm / telemetry.engineMaxRpm) * 100, 100)
       : 0;
     const rpmOffset = circ - (rpmPercent / 100) * circ;

@@ -1,2 +1,5 @@
+packages:
+  - "desktop"
+  - "packages/*"
 allowBuilds:
   esbuild: false
