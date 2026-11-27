@@ -17,10 +17,10 @@ Run from the repo root. Package manager is **pnpm** (workspace: `desktop`, `pack
 | `pnpm build` | `tsc && vite build` for the frontend |
 | `pnpm desktop:dev` | Run the full Tauri app (starts Vite, compiles Rust) |
 | `pnpm desktop:build` | Package the desktop app |
-| `node sim_telemetry.js` | Send fake 60 Hz, 324-byte packets to `127.0.0.1:5300` so you can test without a game |
+| `pnpm sim` | Send fake 60 Hz, 324-byte packets to `127.0.0.1:5300` so you can test without a game |
 | `cargo check --manifest-path desktop/Cargo.toml` | Type-check the Rust side |
 
-`pnpm check` (frontend `tsc` + `cargo check`) lands with PR #7. Once it's on main, run it before calling a change done.
+`pnpm check` (frontend `tsc` + `cargo check`) and `pnpm sim` land with PR #7 (until then, run `node sim_telemetry.js` directly). Once #7 is on main, run `pnpm check` before calling a change done.
 
 There are no automated tests yet.
 
