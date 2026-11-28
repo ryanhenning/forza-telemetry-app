@@ -8,6 +8,10 @@
     "build": "pnpm --filter frontend build",
     "tauri": "pnpm --filter desktop tauri",
     "desktop:dev": "pnpm --filter desktop tauri dev",
-    "desktop:build": "pnpm --filter desktop tauri build"
+    "desktop:build": "pnpm --filter desktop tauri build",
+    "check": "pnpm check:frontend && pnpm check:desktop",
+    "check:frontend": "pnpm --filter frontend check",
+    "check:desktop": "cargo check --manifest-path desktop/Cargo.toml",
+    "sim": "node sim_telemetry.js"
   }
 }
